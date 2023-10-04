@@ -21,8 +21,8 @@ namespace DataAccessLayer.Entity
 
 		public DbSet<Timesheet> Timesheets { get; set; }
 
-		public DbSet<Labor> Labors { get; set; }
+		public DbSet<LaborEntry> LaborEntries { get; set; }
 
-		public DbSet<Machine> Machines { get; set; }
+		public DbSet<MachineEntry> MachineEntries { get; set; }
 	}
 }
