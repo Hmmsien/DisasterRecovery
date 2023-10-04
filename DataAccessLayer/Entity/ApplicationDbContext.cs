@@ -19,7 +19,9 @@ namespace DataAccessLayer.Entity
 
 		public DbSet<JobCode> JobCodes { get; set; }
 
-		public DbSet<Timesheet> Timesheets { get; set; }
+        public DbSet<MachineCode> MachineCodes { get; set; }
+
+        public DbSet<Timesheet> Timesheets { get; set; }
 
 		public DbSet<LaborEntry> LaborEntries { get; set; }
 
