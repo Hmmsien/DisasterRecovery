@@ -1,10 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 namespace DataAccessLayer.Entity
 {
-	public class Contractor
-	{
+    public class Admin
+    {
         [Key]
-		public string ContractorID { get; set; } = string.Empty;
+        public string AdminID { get; set; } = string.Empty;
 
         public string FirstName { get; set; } = string.Empty;
 
