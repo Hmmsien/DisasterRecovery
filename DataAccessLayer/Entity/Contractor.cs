@@ -12,8 +12,6 @@ namespace DataAccessLayer.Entity
 
         public int TotalHrs = 0;
 
-        [Display(Name = "Total Amount")]
-        [Required]
         [DataType(DataType.Currency)]
         public double TotalAmount = 0;
 
