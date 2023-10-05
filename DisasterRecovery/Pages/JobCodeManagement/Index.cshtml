@@ -1,0 +1,42 @@
+﻿@page
+@model DisasterRecovery.Pages.JobCodeManagement.IndexModel
+@{
+    ViewData["Title"] = "JobCode";
+}
+
+
+<div class="table-container">
+    <h1>Job Code Management</h1>
+    <a asp-page="./Create">Create Job Code</a>
+    <table class="table table-sm table-striped table-bordred">
+        <thread>
+            <tr>
+                <th>Job code</th>
+                <th>Description</th>
+                <th>Hourly Rate</th>
+                <th>Max Hors per day</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thread>
+        <tboody>
+            @foreach (var job in Model.JobCodes)
+            {
+                <tr>
+                    <td>@job.JobCodeName</td>
+                    <td>@job.Description</td>
+                    <td>@job.HourlyRate</td>
+                    <td>@job.MaxHoursPerDay</td>
+                    <td>
+                        <a asp-page="./AddDepartment" asp-route-id="@job.JobCodeID">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-page="./Delete" asp-route-id="@job.JobCodeID">Delete</a>
+                    </td>
+
+                </tr>
+            }
+        </tboody>
+    </table>
+</div>
+
