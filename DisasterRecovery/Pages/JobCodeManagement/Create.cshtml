@@ -1,0 +1,34 @@
+﻿@page
+@model DisasterRecovery.Pages.JobCodeManagement.CreateModel
+@{
+}
+
+<div class="form-container">
+    <h2>Create new Job Code</h2>
+    <form method="post">
+        <div class="form-group">
+            <label class="control-label">Job code:</label>
+            <input type="text" class="form-control" asp-for="jobCode.JobCodeName" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Description:</label>
+            <input type="text" class="form-control" asp-for="jobCode.Description" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Hourly Rate:</label>
+            <div>
+                <input type="text" class="form-control" asp-for="jobCode.HourlyRate" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Max Hours per day:</label>
+            <input type="text" class="form-control" asp-for="jobCode.MaxHoursPerDay" />
+        </div>
+
+        <br />
+        <div class="mb-3 form-group">
+            <button type="submit" class="btn btn-outline-primary">Create</button>
+        </div>
+
+    </form>
+</div>
