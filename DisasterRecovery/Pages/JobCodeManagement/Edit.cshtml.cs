@@ -9,8 +9,11 @@ namespace DisasterRecovery.Pages.JobCodeManagement
 {
 	public class EditModel : PageModel
     {
-        public void OnGet()
-        {
-        }
+
+        //public async Task<IActionResult> OnGetAsync(int id)
+        //{
+        //    var client = new HttpClient();
+        //    HttpResponseMessage responseMessage = await client.GetAsync("")
+        //}
     }
 }

@@ -9,18 +9,14 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
+using DataAccessLayer.Data;
 using DataAccessLayer.Entity;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+
 
 namespace DisasterRecovery.Areas.Identity.Pages.Account
 {
@@ -116,6 +112,7 @@ namespace DisasterRecovery.Areas.Identity.Pages.Account
                         {
                             FirstName = Input.FirstName,
                             LastName = Input.LastName,
+                            Email = Input.Email,
                             UserId = user.Id
                         };
 
@@ -125,26 +122,7 @@ namespace DisasterRecovery.Areas.Identity.Pages.Account
                         await _context.SaveChangesAsync();
 
                         // Add the selected role as a claim
-                        await _userManager.AddClaimAsync(user, new Claim("Admin", "admin"));
-                    }
-                    else
-                    {
-                        // Create an Contractor
-                        var contractor = new Contractor
-                        {
-                            FirstName = Input.FirstName,
-                            LastName = Input.LastName,
-                            UserId = user.Id
-                        };
-
-                        // Save the employee user to the Employee table
-                        _context.Contractors.Add(contractor);
-
-                        // Save changes to the database
-                        await _context.SaveChangesAsync();
-
-                        // Add the selected role as a claim
-                        await _userManager.AddClaimAsync(user, new Claim("Contractor", "contractor"));
+                        await _userManager.AddClaimAsync(user, new Claim("Admin", Input.Email));
                     }
 
                     _logger.LogInformation("User created a new account with password.");
