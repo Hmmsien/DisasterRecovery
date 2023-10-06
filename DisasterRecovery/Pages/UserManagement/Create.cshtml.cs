@@ -117,11 +117,10 @@ namespace DisasterRecovery.Pages.UserManagement
                     // Add the selected role as a claim
                     await _userManager.AddClaimAsync(user, new Claim("Contractor", Input.Email));
 
-
                     _logger.LogInformation("User created a new account with password.");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToPage("Index");
+                    return RedirectToPage("ContractorManagement");
           
                 }
                 foreach (var error in result.Errors)
