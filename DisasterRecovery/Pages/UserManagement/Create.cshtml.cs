@@ -103,10 +103,9 @@ namespace DisasterRecovery.Pages.UserManagement
                     // Create an Contractor
                     var contractor = new Contractor
                     {
+                        ContractorID = user.Id,
                         FirstName = Input.FirstName,
-                        LastName = Input.LastName,
-                        Email = Input.Email,
-                        UserId = user.Id
+                        LastName = Input.LastName
                     };
 
                     // Save the employee user to the Employee table
