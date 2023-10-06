@@ -110,10 +110,9 @@ namespace DisasterRecovery.Areas.Identity.Pages.Account
                         // Create an admin user
                         var admin = new Admin
                         {
+                            AdminID = user.Id,
                             FirstName = Input.FirstName,
-                            LastName = Input.LastName,
-                            Email = Input.Email,
-                            UserId = user.Id
+                            LastName = Input.LastName
                         };
 
                         _context.Admins.Add(admin);
