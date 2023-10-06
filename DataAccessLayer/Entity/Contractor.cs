@@ -14,6 +14,5 @@ namespace DataAccessLayer.Entity
 
         [DataType(DataType.Currency)]
         public double TotalAmount = 0;
-
     }
 }
