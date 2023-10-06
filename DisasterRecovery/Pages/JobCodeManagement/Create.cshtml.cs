@@ -27,7 +27,7 @@ namespace DisasterRecovery.Pages.JobCodeManagement
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("http://localhost:5113/");
+                httpClient.BaseAddress = new Uri("http://localhost:5113/api/JobCode");
                 var postTask = await httpClient.PatchAsJsonAsync<JobCode>("api/JobCode/Create", jobCode);
 
                 if (postTask.IsSuccessStatusCode)

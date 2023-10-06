@@ -30,6 +30,23 @@ namespace WebAPI.Controllers
 				await _jobCodeRepository.AddJobCode(jobCode);
 			}
 		}
+
+		[HttpPut]
+		[Route("api/JobCode/Edit/{id}")]
+		public async Task Edit(int id, JobCode jobCode)
+		{
+			if (ModelState.IsValid)
+			{
+				await _jobCodeRepository.UpdateJobCode(id, jobCode);
+			}
+		}
+
+		[HttpDelete]
+		[Route("api/JobCode/Delete/{id}")]
+		public async Task DeleteComfirmedAsync(int id)
+		{
+			await _jobCodeRepository.DeleteJobCode(id);
+		}
 	}
 }
 
