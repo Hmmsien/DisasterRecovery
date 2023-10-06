@@ -26,6 +26,6 @@ namespace DataAccessLayer.Entity
         [Display(Name = "Max Hours Per Day")]
         [Required]
         [Range(typeof(int), "1", "8")]
-        public double MaxHourPerDay { get; set; }
+        public int MaxHoursPerDay { get; set; }
     }
 }
