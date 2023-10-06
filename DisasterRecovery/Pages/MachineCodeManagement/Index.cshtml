@@ -1,0 +1,59 @@
+﻿@page
+@model DisasterRecovery.Pages.MachineCodeManagement.IndexModel
+@{
+    ViewData["Title"] = "Machine Codes";
+}
+
+<h2><b>Machine</b>&nbsp; ⚙️</h2>
+<br />
+<p>
+    <a class="btn btn-success" role="button" asp-page="./Create">
+        Create New &nbsp;<i class="bi bi-plus-circle"></i>
+    </a>
+</p>
+<table style="border-top: 1px solid black;" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Machine Code
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Usage Rate
+            </th>
+            <th>
+                Max Hours Per Day
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.MachineCodeList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MachineCodeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsageRate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxHoursPerDay)
+                </td>
+                <td>
+                    <a class="btn btn-warning btn-sm mx-1" role="button" asp-page="./Edit" asp-route-id="@item.MachineCodeID">
+                        <i class="bi bi-pencil-square"></i>&nbsp;Assign
+                    </a>
+                    <a class="btn btn-danger btn-sm mx-1" role="button" asp-page="./Delete" asp-route-id="@item.MachineCodeID">
+                        <i class="bi bi-trash"></i>&nbsp;Delete
+                    </a>
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>
