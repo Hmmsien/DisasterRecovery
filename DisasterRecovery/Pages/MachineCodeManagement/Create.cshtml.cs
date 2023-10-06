@@ -25,22 +25,39 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
         {
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
+            
             using(var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new System.Uri(apiBaseUrl);
-                var postTask = httpClient.PostAsJsonAsync<MachineCode>("/api/MachineCode/Create", Input);
-                postTask.Wait();
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "/api/MachineCode/AlreadyExist/" + Input.MachineCodeName))
                 {
-                    return RedirectToPage(nameof(Index));
-                }
-                else
-                {
-                    ErrorMessage = "Please Contact Administrator for Assistance.";
-                    return Page();
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    bool alreadyexists = JsonConvert.DeserializeObject<bool>(apiResponse);
+                    if (alreadyexists)
+                    {
+                        ErrorMessage = "A Machine Code with this name already exists.";
+                        return Page();
+                    }
+                    else
+                    {
+                        using (var httpClient2 = new HttpClient())
+                        {
+                            httpClient2.BaseAddress = new System.Uri(apiBaseUrl);
+                            var postTask = httpClient2.PostAsJsonAsync<MachineCode>("/api/MachineCode/Create", Input);
+                            postTask.Wait();
+                            var result = postTask.Result;
+                            if (result.IsSuccessStatusCode)
+                            {
+                                return RedirectToPage(nameof(Index));
+                            }
+                            else
+                            {
+                                ErrorMessage = "Please Contact Administrator for Assistance.";
+                                return Page();
+                            }
+                        }
+                    }
                 }
             }
         }

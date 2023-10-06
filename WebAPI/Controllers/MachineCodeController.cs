@@ -23,6 +23,20 @@ namespace WebAPI.Controllers
             return await _machineCodeRepository.GetAllMachineCode();
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<MachineCode> GetById(int id)
+        {
+            return await _machineCodeRepository.GetMachineCodeById(id);
+        }
+
+        [HttpGet]
+        [Route("{name}")]
+        public bool AlreadyExist(string name)
+        {
+            return _machineCodeRepository.MachineCodeExists(name);
+        }
+
         [HttpPost]
         public async Task Create([FromBody] MachineCode machineCode)
         {
@@ -34,11 +48,11 @@ namespace WebAPI.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task Edit(int? id, MachineCode machineCode)
+        public async Task Edit(int id, [FromBody] MachineCode machineCode)
         {
-            if(ModelState.IsValid && id == machineCode.MachineCodeID)
+            if(ModelState.IsValid)
             {
-                await _machineCodeRepository.Update(machineCode);
+                await _machineCodeRepository.Update(id, machineCode);
             }  
         }
 
