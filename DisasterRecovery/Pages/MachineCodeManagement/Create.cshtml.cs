@@ -27,10 +27,10 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
 
         public async Task<IActionResult> OnPost()
         {
-            
-            using(var httpClient = new HttpClient())
+
+            using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(apiBaseUrl + "/api/MachineCode/AlreadyExist/" + Input.MachineCodeName))
+                using (var response = await httpClient.GetAsync($"{apiBaseUrl}/api/MachineCode/AlreadyExist/{Input.MachineCodeName}"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     bool alreadyexists = JsonConvert.DeserializeObject<bool>(apiResponse);
@@ -39,25 +39,23 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
                         ErrorMessage = "A Machine Code with this name already exists.";
                         return Page();
                     }
-                    else
-                    {
-                        using (var httpClient2 = new HttpClient())
-                        {
-                            httpClient2.BaseAddress = new System.Uri(apiBaseUrl);
-                            var postTask = httpClient2.PostAsJsonAsync<MachineCode>("/api/MachineCode/Create", Input);
-                            postTask.Wait();
-                            var result = postTask.Result;
-                            if (result.IsSuccessStatusCode)
-                            {
-                                return RedirectToPage(nameof(Index));
-                            }
-                            else
-                            {
-                                ErrorMessage = "Please Contact Administrator for Assistance.";
-                                return Page();
-                            }
-                        }
-                    }
+                }
+            }
+
+            using (var httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new System.Uri(apiBaseUrl);
+                var postTask = httpClient.PostAsJsonAsync<MachineCode>("/api/MachineCode/Create", Input);
+                postTask.Wait();
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToPage(nameof(Index));
+                }
+                else
+                {
+                    ErrorMessage = "Please Contact Administrator for Assistance.";
+                    return Page();
                 }
             }
         }

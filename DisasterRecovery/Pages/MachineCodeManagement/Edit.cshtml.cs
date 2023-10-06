@@ -25,7 +25,7 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
         {
             using(var httpClient = new HttpClient())
             {
-                using(var response = await  httpClient.GetAsync(apiBaseUrl + "/api/MachineCode/GetById/" + id))
+                using(var response = await  httpClient.GetAsync($"{apiBaseUrl}/api/MachineCode/GetById/{id}"))
                 {
                     if(response.IsSuccessStatusCode)
                     {
@@ -48,7 +48,7 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(apiBaseUrl + "/api/MachineCode/GetById/" + id))
+                using (var response = await httpClient.GetAsync($"{apiBaseUrl}/api/MachineCode/GetById/{id}"))
                 {
                     if (response.IsSuccessStatusCode)
                     {
@@ -66,7 +66,7 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
             {
                 using (var httpClient = new HttpClient())
                 {
-                    using (var response = await httpClient.GetAsync(apiBaseUrl + "/api/MachineCode/AlreadyExist/" + Input.MachineCodeName))
+                    using (var response = await httpClient.GetAsync($"{apiBaseUrl}/api/MachineCode/AlreadyExist/{Input.MachineCodeName}"))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         bool alreadyexists = JsonConvert.DeserializeObject<bool>(apiResponse);
@@ -82,7 +82,7 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
             using (var httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = new System.Uri(apiBaseUrl);
-                var postTask = httpClient.PutAsJsonAsync<MachineCode>("/api/MachineCode/Edit/" + id, Input);
+                var postTask = httpClient.PutAsJsonAsync<MachineCode>($"/api/MachineCode/Edit/{id}", Input);
                 postTask.Wait();
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)

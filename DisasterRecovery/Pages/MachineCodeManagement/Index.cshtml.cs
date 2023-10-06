@@ -23,7 +23,7 @@ namespace DisasterRecovery.Pages.MachineCodeManagement
 
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(apiBaseUrl + "/api/MachineCode/Index"))
+                using (var response = await httpClient.GetAsync($"{apiBaseUrl}/api/MachineCode/Index"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     MachineCodeList = JsonConvert.DeserializeObject<List<MachineCode>>(apiResponse);
