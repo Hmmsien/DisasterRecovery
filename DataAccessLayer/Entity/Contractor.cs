@@ -10,9 +10,9 @@ namespace DataAccessLayer.Entity
 
         public string LastName { get; set; } = string.Empty;
 
-        public double TotalHrs;
+        public double TotalHrs { get; set; } = 0;
 
         [DataType(DataType.Currency)]
-        public double TotalAmount;
+        public double TotalAmount { get; set; } = 0;
     }
 }
