@@ -2,7 +2,6 @@ using System;
 using DataAccessLayer.Entity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace DataAccessLayer.Data
 {
@@ -30,12 +29,6 @@ namespace DataAccessLayer.Data
 
 		public DbSet<MachineEntry> MachineEntries { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            const string connectionString = "Server=localhost,1433;Database=DisasterRecoveryDB;TrustServerCertificate=True;MultiSubnetFailover=True";
-
-            optionsBuilder.UseSqlServer(connectionString);
-        }
     }
 }
 
