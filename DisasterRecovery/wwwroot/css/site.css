@@ -20,3 +20,152 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.wrap-register {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    padding-top: 0;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.form-register {
+    width: 1200px;
+    height: 650px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+}
+
+.left-register {
+    width: 600px;
+    height: 650px;
+}
+
+    .left-register video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.right-register {
+    width: 600px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+}
+
+h1 {
+    font-size: 32px;
+    color: #70b4e3;
+    padding-bottom: 10px;
+}
+
+.wrap {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 1200px;
+    height: 460px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+}
+
+.left {
+    width: 600px;
+    height: 460px;
+}
+
+    .left video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.right {
+    width: 600px;
+    height: 460px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+}
+
+.right-con {
+    width: 80%;
+}
+
+.form-register {
+    width: 1200px;
+    height: 650px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Basic navbar styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Submenu styles */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+}
+
+nav ul li:hover ul {
+    display: block;
+    text-align: left;
+}
+
+nav ul li ul li {
+    display: block;
+    background: white;
+}
+
+nav ul li ul li a {
+    padding: 10px;
+    text-align: left;
+}
+
+.table-header {
+    font-size: 32px;
+    color: #70b4e3;
+    padding-bottom: 10px;
+}
+
+.table-header img {
+    width: 40px;
+    height: 35px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
