@@ -17,7 +17,7 @@ namespace DisasterRecovery.Pages.JobCodeManagement
         {
             using(var httpClient = new HttpClient())
             {
-                using(var response = await httpClient.GetAsync("http://localhost:5113/api/JobCode/Get"))
+                using(var response = await httpClient.GetAsync("http://localhost:5113/api/JobCode/GetAll"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     JobCodes = JsonConvert.DeserializeObject<IEnumerable<JobCode>>(apiResponse);

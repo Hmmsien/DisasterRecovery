@@ -28,12 +28,11 @@
                     <td>@job.HourlyRate</td>
                     <td>@job.MaxHoursPerDay</td>
                     <td>
-                        <a asp-page="./AddDepartment" asp-route-id="@job.JobCodeID">Edit</a>
+                        <a asp-page="./Edit" asp-route-id="@job.JobCodeID">Edit</a>
                     </td>
                     <td>
                         <a asp-page="./Delete" asp-route-id="@job.JobCodeID">Delete</a>
                     </td>
-
                 </tr>
             }
         </tboody>
