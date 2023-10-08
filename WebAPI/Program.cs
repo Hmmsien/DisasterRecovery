@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IMachineCodeRepository, MachineCodeRepository>();
+builder.Services.AddTransient<IJobCodeRepository, JobCodeRepository>();
 builder.Services.AddDbContext<ApplicationDbContext>(options => 
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
