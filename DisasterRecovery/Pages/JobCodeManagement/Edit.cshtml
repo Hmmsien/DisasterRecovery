@@ -1,5 +1,48 @@
 ﻿@page
 @model DisasterRecovery.Pages.JobCodeManagement.EditModel
 @{
+    ViewData["Title"] = "Edit Job Code";
 }
 
+<div>
+    <a asp-page="./Index"><img style="height: 30px; width: 30px;" src="https://static.thenounproject.com/png/251451-200.png" /></a>
+</div>
+<br />
+<h2><b>@ViewData["Title"]</b></h2>
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="editMachineCode" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="jobCode.JobCodeName" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.JobCodeName"></label>
+                <span asp-validation-for="jobCode.JobCodeName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="jobCode.Description" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.Description"></label>
+                <span asp-validation-for="jobCode.Description" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="jobCode.HourlyRate" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.HourlyRate"></label>
+                <span asp-validation-for="jobCode.HourlyRate" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="jobCode.MaxHoursPerDay" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.MaxHoursPerDay"></label>
+                <span asp-validation-for="jobCode.MaxHoursPerDay" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="jobCode.JobCodeID" />
+            <button id="editMachineCode" type="submit" class="btn btn-lg btn-outline-primary">Save Changes</button>
+        </form>
+    </div>
+</div>
+<br />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

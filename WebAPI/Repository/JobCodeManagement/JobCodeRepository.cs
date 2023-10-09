@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 namespace WebAPI.Repository.JobCodeManagement
 {
     public class JobCodeRepository : IJobCodeRepository
-	{
+    {
         private readonly ApplicationDbContext _context;
 
-		public JobCodeRepository(ApplicationDbContext context)
-		{
+        public JobCodeRepository(ApplicationDbContext context)
+        {
             _context = context;
-		}
+        }
 
         public async Task AddJobCode(JobCode jobCode)
         {
@@ -28,9 +28,18 @@ namespace WebAPI.Repository.JobCodeManagement
             }
         }
 
-        public Task DeleteJobCode(int id)
+        public async Task DeleteJobCode(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var jobcode = await _context.JobCodes.FindAsync(id);
+                _context.JobCodes.Remove(jobcode);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<JobCode>> GetAllJobCodes()
@@ -46,14 +55,41 @@ namespace WebAPI.Repository.JobCodeManagement
             }
         }
 
-        public Task<JobCode> GetJobCode(int? id)
+        public async Task<JobCode> GetJobCode(int? id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var jobCode = await _context.JobCodes.FindAsync(id);
+                if (jobCode == null)
+                {
+                    return null;
+                }
+                return jobCode;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public Task UpdateJobCode(int id, JobCode jobCode)
+        public async Task UpdateJobCode(int id, JobCode jobCode)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var job = await _context.JobCodes.FindAsync(id);
+                if (job != null)
+                {
+                    job.JobCodeName = jobCode.JobCodeName;
+                    job.Description = jobCode.Description;
+                    job.HourlyRate = jobCode.HourlyRate;
+                    job.MaxHoursPerDay = jobCode.MaxHoursPerDay;
+                    _context.SaveChanges();
+                }
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }
