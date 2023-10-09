@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
 namespace DisasterRecovery.Pages.JobCodeManagement
 {
-	public class IndexModel : PageModel
+    [Authorize(Policy = "AdminOnly")]
+    public class IndexModel : PageModel
     {
         public IEnumerable<JobCode> JobCodes { get; set; }
 

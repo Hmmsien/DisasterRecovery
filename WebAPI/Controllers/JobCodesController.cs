@@ -41,7 +41,7 @@ namespace WebAPI.Controllers
 
         [HttpPut]
         [Route("api/JobCode/Edit/{id}")]
-        public async Task Edit(int id, JobCode jobCode)
+        public async Task Edit(int id, [FromBody] JobCode jobCode)
         {
             if (ModelState.IsValid)
             {

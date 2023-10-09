@@ -10,6 +10,8 @@ namespace DisasterRecovery.Pages.JobCodeManagement
 {
 	public class CreateModel : PageModel
     {
+        private string apiBaseUrl = "http://localhost:5113";
+
         public async Task<IActionResult> OnGetAsync()
         {
             return Page();
@@ -27,20 +29,23 @@ namespace DisasterRecovery.Pages.JobCodeManagement
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new Uri("http://localhost:5113/api/JobCode");
-                var postTask = await httpClient.PatchAsJsonAsync<JobCode>("api/JobCode/Create", jobCode);
+                using (var httpClient2 = new HttpClient())
+                {
+                    httpClient2.BaseAddress = new System.Uri(apiBaseUrl);
+                    var postTask = httpClient2.PostAsJsonAsync<JobCode>("/api/JobCode/Create", jobCode);
+                    postTask.Wait();
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToPage(nameof(Index));
+                    }
+                    else
+                    {
+                        return Page();
+                    }
+                }
 
-                if (postTask.IsSuccessStatusCode)
-                {
-                    return RedirectToPage("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError(String.Empty, "Server Error.....Please Contact Administrator");
-                }
             }
-
-            return Page();
         }
     }
 }

@@ -54,7 +54,7 @@ namespace DisasterRecovery.Pages.UserManagement
 
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./ContractorManagement");
+            return RedirectToPage("./AdminManagement");
         }
     }
 }

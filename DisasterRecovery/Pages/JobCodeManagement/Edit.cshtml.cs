@@ -43,18 +43,23 @@ namespace DisasterRecovery.Pages.JobCodeManagement
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.BaseAddress = new System.Uri(apiBaseUrl);
-                var postTask = httpClient.PutAsJsonAsync<JobCode>($"/api/JobCode/Edit/{id}", jobCode);
-                postTask.Wait();
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
+
+                using (var httpClient2 = new HttpClient())
                 {
-                    return RedirectToPage(nameof(Index));
+                    httpClient.BaseAddress = new System.Uri(apiBaseUrl);
+                    var postTask = httpClient.PutAsJsonAsync<JobCode>($"/api/JobCode/Edit/{id}", jobCode);
+                    postTask.Wait();
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        return RedirectToPage(nameof(Index));
+                    }
+                    else
+                    {
+                        return Page();
+                    }
                 }
-                else
-                {
-                    return Page();
-                }
+
             }
         }
     }
