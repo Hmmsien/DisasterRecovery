@@ -1,0 +1,78 @@
+﻿@page
+@model DisasterRecovery.Pages.TimesheetSubmission.IndexModel
+@{
+    ViewData["Title"] = "Timesheet Submissions";
+}
+
+<h2><b>@ViewData["Title"]</b></h2>
+<br />
+<span>
+    <a class="btn btn-success" role="button" asp-page="./Create">
+        Create New Timesheet&nbsp;<i class="bi bi-plus-circle"></i>
+    </a>
+</span>
+<br />
+<br />
+@if (Model.timesheetTotals.Count > 0)
+{
+    <table style="border-top: 1px solid black;" class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Date Submitted
+                </th>
+                <th>
+                    Site Code
+                </th>
+                <th>
+                    Total Hrs
+                </th>
+                <th>
+                    Total Amount
+                </th>
+                <th>
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.timesheetTotals)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubmitedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SiteCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalHrs) Hrs.
+                    </td>
+                    <td>
+                        $@Html.DisplayFor(modelItem => item.TotalAmount)
+                    </td>
+                    <td>
+                        @if (item.Status == "Pending" || item.Status == "Viewed")
+                        {
+                            <span class="badge rounded-pill bg-secondary">@Html.DisplayFor(modelItem => item.Status)</span>
+                        }
+                        else if (item.Status == "Approved")
+                        {
+                            <span class="badge rounded-pill bg-success">@Html.DisplayFor(modelItem => item.Status)</span>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm mx-1" role="button" asp-page="./Details" asp-route-id="@item.TimesheetID">
+                            View Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>You have not created any timesheets. Click the 'Create New Timesheet' button above to create one now.</p>
+}

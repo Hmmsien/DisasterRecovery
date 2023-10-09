@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DisasterRecovery.Pages.UserManagement
 {
-	public class DeleteContractorModel : PageModel
+    public class DeleteContractorModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 

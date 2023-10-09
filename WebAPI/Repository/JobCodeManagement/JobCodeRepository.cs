@@ -1,11 +1,11 @@
 ﻿using System;
-using DataAccessLayer.Entity;
 using DataAccessLayer.Data;
+using DataAccessLayer.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Repository.JobCodeManagement
 {
-	public class JobCodeRepository : IJobCodeRepository
+    public class JobCodeRepository : IJobCodeRepository
 	{
         private readonly ApplicationDbContext _context;
 

@@ -1,0 +1,130 @@
+﻿@page
+@model DisasterRecovery.Pages.TimesheetApproval.IndexModel
+@{
+    ViewData["Title"] = "Viewing All Timesheets";
+}
+
+<h2><b>@ViewData["Title"]</b></h2>
+<hr />
+<br />
+@if (Model.PendingTimesheetTotals.Count > 0 || Model.ApprovedTimesheetTotals.Count > 0)
+{
+    if (Model.PendingTimesheetTotals.Count > 0)
+    {
+        <h4>Pending Timesheets</h4>
+        <table style="border-top: 1px solid black;" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Date Submitted
+                    </th>
+                    <th>
+                        Contractor Name
+                    </th>
+                    <th>
+                        Site Code
+                    </th>
+                    <th>
+                        Total Hrs
+                    </th>
+                    <th>
+                        Total Amount
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PendingTimesheetTotals)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubmitedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContractorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiteCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalHrs)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-sm mx-1" role="button" asp-page="./Details" asp-route-id="@item.TimesheetID">
+                                View & Approve
+                            </a>
+                            <a class="btn btn-danger btn-sm mx-1" role="button" asp-page="./Delete" asp-route-id="@item.TimesheetID">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+    }
+
+    if (Model.ApprovedTimesheetTotals.Count > 0)
+    {
+        <h4>Approved Timesheets</h4>
+        <table style="border-top: 1px solid black;" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Date Submitted
+                    </th>
+                    <th>
+                        Contractor Name
+                    </th>
+                    <th>
+                        Site Code
+                    </th>
+                    <th>
+                        Total Hrs
+                    </th>
+                    <th>
+                        Total Amount
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ApprovedTimesheetTotals)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubmitedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContractorName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiteCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalHrs)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-sm mx-1" role="button" asp-page="./Details" asp-route-id="@item.TimesheetID">
+                                View
+                            </a>
+                            <a class="btn btn-danger btn-sm mx-1" role="button" asp-page="./Delete" asp-route-id="@item.TimesheetID">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+    <p>There are no timesheets in the database currently.</p>
+}

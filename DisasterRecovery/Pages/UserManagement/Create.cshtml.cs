@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace DisasterRecovery.Pages.UserManagement
 {
-	public class CreateModel : PageModel
+    public class CreateModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;

@@ -13,6 +13,26 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.Cookie.HttpOnly = true;
+    option.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+    option.LoginPath = "/Identity/Account/Login";
+    option.LogoutPath = "/Identity/Account/Logout";
+    option.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    option.SlidingExpiration = true;
+});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireClaim("Admin"));
+    options.AddPolicy("ContractorOnly", policy => policy.RequireClaim("Contractor"));
+    options.AddPolicy("AnyUser",
+        policy => policy.RequireAssertion(
+            context => context.User.HasClaim(claim => claim.Type == "Admin")
+            || context.User.HasClaim(claim => claim.Type == "Contractor")));
+});
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

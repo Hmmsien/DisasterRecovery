@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DisasterRecovery.Pages.UserManagement
 {
-	public class DeleteAdminModel : PageModel
+    public class DeleteAdminModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 

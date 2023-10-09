@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DisasterRecovery.Pages.JobCodeManagement
 {
-	public class DeleteModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 

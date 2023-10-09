@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace DisasterRecovery.Pages.UserManagement
 {
-	public class AdminManagementModel : PageModel
+    public class AdminManagementModel : PageModel
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;

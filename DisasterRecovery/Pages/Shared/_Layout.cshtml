@@ -21,16 +21,27 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/JobCodeManagement/Index">Job Code Management</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/MachineCodeManagement/Index">Machine Code Management</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/UserManagement/Index">User Management</a>
+                            <a class="nav-link text-dark">User Management</a>
+                            <ul>
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/UserManagement/AdminManagement">Admin</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/UserManagement/ContractorManagement">Contractor</a>
+                                </li>
+                            </ul>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/TimesheetSubmission/Index">Timesheet Submission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/TimesheetApproval/Index">Timesheet Approval</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>

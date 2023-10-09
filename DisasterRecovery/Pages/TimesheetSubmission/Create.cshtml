@@ -1,0 +1,190 @@
+﻿@page
+@model DisasterRecovery.Pages.TimesheetSubmission.CreateModel
+@{
+    ViewData["Title"] = "New Timesheet";
+}
+
+<div>
+    <a asp-page="./Index"><img style="height: 30px; width: 30px;" src="https://static.thenounproject.com/png/251451-200.png" /></a>
+</div>
+<br />
+<h2><b>@ViewData["Title"]</b></h2>
+<hr />
+<br />
+
+@if (Model.ErrorMessage != "")
+{
+    <div class="alart alert-danger p-3" role="alert">
+        <b>Server Error: </b>@Model.ErrorMessage
+    </div>
+    <br />
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="createTimesheet" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <select asp-for="Timesheet.SiteCode" class="form-select" aria-required="true">
+                    <option selected="selected" value="">---</option>
+                    <option value="PA-120">PA-120</option>
+                    <option value="NJ-080">NJ-080</option>
+                    <option value="MA-340">MA-340</option>
+                    <option value="KC-140">KC-140</option>
+                </select>
+                <label asp-for="Timesheet.SiteCode">Site Code</label>
+            </div>
+
+            <br/>
+
+            <h5>Labor Entry</h5>
+            <div style="display: inline-block;">
+                <dl class="row">
+                    <dt class="col-md-6">
+                        <div class="form-floating">
+                            <select asp-for="LaborEntry1.JobCodeName" class="form-control" aria-required="true" >
+                                <option selected="selected" value="">---</option>
+                                @foreach (var jobcode in Model.JobCodes)
+                                {
+                                    <option value=@jobcode.JobCodeName>@jobcode.JobCodeName</option>
+                                }
+                            </select>
+                            <label asp-for="LaborEntry1.JobCodeName">Labor code</label>
+                        </div>
+                    </dt>
+                    <dd class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="LaborEntry1.HrsWorked" class="form-control" aria-required="true" />
+                            <label asp-for="LaborEntry1.HrsWorked">Hrs. worked</label>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div style="display: inline-block;">
+                <dl class="row">
+                    <dt class="col-md-6">
+                        <div class="form-floating">
+                            <select asp-for="LaborEntry2.JobCodeName" class="form-control" aria-required="true">
+                                <option selected="selected" value="">---</option>
+                                @foreach (var jobcode in Model.JobCodes)
+                                {
+                                    <option value=@jobcode.JobCodeName>@jobcode.JobCodeName</option>
+                                }
+                            </select>
+                            <label asp-for="LaborEntry2.JobCodeName">Labor code</label>
+                        </div>
+                    </dt>
+                    <dd class="col-md-6">
+                        <div class="form-floating">
+                            <div class="form-floating">
+                                <input asp-for="LaborEntry2.HrsWorked" class="form-control" aria-required="true" />
+                                <label asp-for="LaborEntry2.HrsWorked">Hrs. worked</label>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div style="display: inline-block;">
+                <dl class="row">
+                    <dt class="col-md-6">
+                        <div class="form-floating">
+                            <select asp-for="LaborEntry3.JobCodeName" class="form-control" aria-required="true">
+                                <option selected="selected" value="">---</option>
+                                @foreach (var jobcode in Model.JobCodes)
+                                {
+                                    <option value=@jobcode.JobCodeName>@jobcode.JobCodeName</option>
+                                }
+                            </select>
+                            <label asp-for="LaborEntry3.JobCodeName">Labor code</label>
+                        </div>
+                    </dt>
+                    <dd class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="LaborEntry3.HrsWorked" class="form-control" aria-required="true" />
+                            <label asp-for="LaborEntry3.HrsWorked">Hrs. worked</label>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+
+            <br/>
+
+            <h5>Machine Entry</h5>
+            <div style="display: inline-block;">
+                <dl class="row">
+                    <dt class="col-md-7">
+                        <div class="form-floating">
+                            <select asp-for="MachineEntry1.MachineCodeName" class="form-control" aria-required="true">
+                                <option selected="selected" value="">---</option>
+                                @foreach (var machinecode in Model.MachineCodes)
+                                {
+                                    <option value=@machinecode.MachineCodeName>@machinecode.MachineCodeName</option>
+                                }
+                            </select>
+                            <label asp-for="MachineEntry1.MachineCodeName">Machine code</label>
+                        </div>
+                    </dt>
+                    <dd class="col-md-5">
+                        <div class="form-floating">
+                            <input asp-for="MachineEntry1.HrsUsed" class="form-control" aria-required="true" />
+                            <label asp-for="MachineEntry1.HrsUsed">Hrs. used</label>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div style="display: inline-block;">
+                <dl class="row">
+                    <dt class="col-md-7">
+                        <div class="form-floating">
+                            <select asp-for="MachineEntry2.MachineCodeName" class="form-control" aria-required="true">
+                                <option selected="selected" value="">---</option>
+                                @foreach (var machinecode in Model.MachineCodes)
+                                {
+                                    <option value=@machinecode.MachineCodeName>@machinecode.MachineCodeName</option>
+                                }
+                            </select>
+                            <label asp-for="MachineEntry2.MachineCodeName">Machine code</label>
+                        </div>
+                    </dt>
+                    <dd class="col-md-5">
+                        <div class="form-floating">
+                            <input asp-for="MachineEntry2.HrsUsed" class="form-control" aria-required="true" />
+                            <label asp-for="MachineEntry2.HrsUsed">Hrs. used</label>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div style="display: inline-block;">
+                <dl class="row">
+                    <dt class="col-md-7">
+                        <div class="form-floating">
+                            <select asp-for="MachineEntry3.MachineCodeName" class="form-control" aria-required="true">
+                                <option selected="selected" value="">---</option>
+                                @foreach (var machinecode in Model.MachineCodes)
+                                {
+                                    <option value=@machinecode.MachineCodeName>@machinecode.MachineCodeName</option>
+                                }
+                            </select>
+                            <label asp-for="MachineEntry3.MachineCodeName">Machine code</label>
+                        </div>
+                    </dt>
+                    <dd class="col-md-5">
+                        <div class="form-floating">
+                            <input asp-for="MachineEntry3.HrsUsed" class="form-control" aria-required="true" />
+                            <label asp-for="MachineEntry3.HrsUsed">Hrs. used</label>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+
+            <button id="createTimesheet" type="submit" class="w-100 btn btn-lg btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+</div>
+<br />
+@* <div>
+    <a class="btn btn-secondary btn-sm" role="button" asp-page="./Index">Back to List</a>
+</div> *@
+@* @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
