@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form id="editMachineCode" method="post">
+        <form id="editJobCode" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
                 <input asp-for="jobCode.JobCodeName" class="form-control" aria-required="true" />
@@ -37,7 +37,7 @@
                 <span asp-validation-for="jobCode.MaxHoursPerDay" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="jobCode.JobCodeID" />
-            <button id="editMachineCode" type="submit" class="btn btn-lg btn-outline-primary">Save Changes</button>
+            <button id="editJobCode" type="submit" class="w-100 btn btn-lg btn-primary mt-3">Save Changes</button>
         </form>
     </div>
 </div>

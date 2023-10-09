@@ -134,9 +134,9 @@ namespace DisasterRecovery.Pages.TimesheetSubmission
                 MachineEntries.Add(machineEntry);
             }
 
-            if (LaborEntries.Count == 0 && MachineEntries.Count == 0)
+            if (LaborEntries.Count == 0)
             {
-                ErrorMessage = "Please enter at least 1 entry before you submit";
+                ErrorMessage = "Please enter at least 1 labor entry before you submit";
                 return Page();
             }
 

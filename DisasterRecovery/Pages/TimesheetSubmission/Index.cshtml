@@ -2,13 +2,14 @@
 @model DisasterRecovery.Pages.TimesheetSubmission.IndexModel
 @{
     ViewData["Title"] = "Timesheet Submissions";
+    Layout = "_SideBarLayout";
 }
 
 <h2><b>@ViewData["Title"]</b></h2>
 <br />
 <span>
     <a class="btn btn-success" role="button" asp-page="./Create">
-        Create New Timesheet&nbsp;<i class="bi bi-plus-circle"></i>
+        Create New Timesheet&nbsp;<i class="bi bi-plus"></i>
     </a>
 </span>
 <br />
@@ -64,7 +65,7 @@
                     </td>
                     <td>
                         <a class="btn btn-primary btn-sm mx-1" role="button" asp-page="./Details" asp-route-id="@item.TimesheetID">
-                            View Details
+                            View Details&nbsp;<i class="bi bi-text-left"></i>
                         </a>
                     </td>
                 </tr>

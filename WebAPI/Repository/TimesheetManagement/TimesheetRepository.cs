@@ -196,20 +196,14 @@ namespace WebAPI.Repository.TimesheetManagement
             try
             {
                 int totalHrsInLaborEntries = 0;
-                int totalHrsInMachineEntries = 0;
                 IEnumerable<LaborEntry> laborEntries = GetLaborEntriesForTimesheet(id);
-                IEnumerable<MachineEntry> machineEntries = GetMachineEntriesForTimesheet(id);
 
                 foreach (var laborEntry in laborEntries)
                 {
                     totalHrsInLaborEntries += laborEntry.HrsWorked;
                 }
-                foreach (var machineEntry in machineEntries)
-                {
-                    totalHrsInMachineEntries += machineEntry.HrsUsed;
-                }
 
-                return (totalHrsInLaborEntries+totalHrsInMachineEntries);
+                return (totalHrsInLaborEntries);
             }
             catch
             {

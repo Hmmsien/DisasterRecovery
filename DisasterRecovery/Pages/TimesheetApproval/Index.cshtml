@@ -5,13 +5,14 @@
 }
 
 <h2><b>@ViewData["Title"]</b></h2>
-<hr />
 <br />
 @if (Model.PendingTimesheetTotals.Count > 0 || Model.ApprovedTimesheetTotals.Count > 0)
 {
     if (Model.PendingTimesheetTotals.Count > 0)
     {
-        <h4>Pending Timesheets</h4>
+        <h4>
+            Pending Timesheets&nbsp;<i class="bi bi-dash-lg"></i>
+        </h4>
         <table style="border-top: 1px solid black;" class="table table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -47,17 +48,17 @@
                             @Html.DisplayFor(modelItem => item.SiteCode)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TotalHrs)
+                            @Html.DisplayFor(modelItem => item.TotalHrs) Hrs.
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                            $@Html.DisplayFor(modelItem => item.TotalAmount)
                         </td>
                         <td>
                             <a class="btn btn-primary btn-sm mx-1" role="button" asp-page="./Details" asp-route-id="@item.TimesheetID">
                                 View & Approve
                             </a>
                             <a class="btn btn-danger btn-sm mx-1" role="button" asp-page="./Delete" asp-route-id="@item.TimesheetID">
-                                Delete
+                                <i class="bi bi-trash"></i>
                             </a>
                         </td>
                     </tr>
@@ -69,7 +70,7 @@
 
     if (Model.ApprovedTimesheetTotals.Count > 0)
     {
-        <h4>Approved Timesheets</h4>
+        <h4>Approved Timesheets&nbsp;<i class="bi bi-check-lg"></i></h4>
         <table style="border-top: 1px solid black;" class="table table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -105,17 +106,17 @@
                             @Html.DisplayFor(modelItem => item.SiteCode)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TotalHrs)
+                            @Html.DisplayFor(modelItem => item.TotalHrs) Hrs.
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                            $@Html.DisplayFor(modelItem => item.TotalAmount)
                         </td>
                         <td>
                             <a class="btn btn-primary btn-sm mx-1" role="button" asp-page="./Details" asp-route-id="@item.TimesheetID">
                                 View
                             </a>
                             <a class="btn btn-danger btn-sm mx-1" role="button" asp-page="./Delete" asp-route-id="@item.TimesheetID">
-                                Delete
+                                <i class="bi bi-trash"></i>
                             </a>
                         </td>
                     </tr>
