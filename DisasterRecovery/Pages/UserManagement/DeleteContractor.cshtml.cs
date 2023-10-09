@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer.Data;
 using DataAccessLayer.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace DisasterRecovery.Pages.UserManagement
 {
+    [Authorize(Policy = "AdminOnly")]
     public class DeleteContractorModel : PageModel
     {
         private readonly ApplicationDbContext _context;

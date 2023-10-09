@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer.Data;
 using DataAccessLayer.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
 namespace DisasterRecovery.Pages.JobCodeManagement
 {
+    [Authorize(Policy = "AdminOnly")]
     public class DeleteModel : PageModel
     {
         private readonly ApplicationDbContext _context;

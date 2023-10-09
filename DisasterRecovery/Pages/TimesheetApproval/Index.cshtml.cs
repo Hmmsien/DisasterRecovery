@@ -1,4 +1,5 @@
 using DataAccessLayer.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ using System.Security.Claims;
 
 namespace DisasterRecovery.Pages.TimesheetApproval
 {
+    [Authorize(Policy = "AdminOnly")]
     public class IndexModel : PageModel
     {
         private IConfiguration _configuration;
