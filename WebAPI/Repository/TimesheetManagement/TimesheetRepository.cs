@@ -171,7 +171,7 @@ namespace WebAPI.Repository.TimesheetManagement
         {
             try
             {
-                return _context.Timesheets.Where(t => t.Status == "Pending" || t.Status == "Viewed").Select(t => t).ToList();
+                return _context.Timesheets.Where(t => t.Status == "Pending" || t.Status == "Viewed").OrderByDescending(t => t.SubmitedDate).Select(t => t).ToList();
             }
             catch
             {
@@ -183,7 +183,7 @@ namespace WebAPI.Repository.TimesheetManagement
         {
             try
             {
-                return _context.Timesheets.Where(t => t.Status == "Approved").Select(t => t).ToList();
+                return _context.Timesheets.Where(t => t.Status == "Approved").OrderByDescending(t => t.SubmitedDate).Select(t => t).ToList();
             }
             catch
             {
