@@ -1,17 +1,18 @@
 ﻿@page
 @model DisasterRecovery.Pages.Dashboard.ContractorModel
 @{
+    ViewData["Title"] = "Contractor Dashboard";
 }
 
-<h1>Contractor Dashboard</h1>
-<section class="text-center">
+<h1><b>Contractor Dashboard</b></h1>
+<section class="text-center dashboard">
     <div class="row">
 
-        <div class="col-lg-6 mb-4">
+        <div class="col-lg-3 mb-4">
             <div class="card">
                 <div class="p-3 badge-primary rounded-4">
                     <a asp-area="" asp-page="/TimesheetSubmission/Index">
-                        <img class="dash-img" src="/images/Contractor/timesheet.jpeg" />
+                        <img height="150" class="card-img-top dash-img" src="/images/Contractor/timesheet.jpeg" />
                     </a>
                 </div>
                 <div class="card-body">
