@@ -1,14 +1,14 @@
 ﻿@page
 @model DisasterRecovery.Pages.MachineCodeManagement.IndexModel
 @{
-    ViewData["Title"] = "Machine Codes";
+    ViewData["Title"] = "Machine Management";
 }
 
-<h2><b>Machine</b>&nbsp; ⚙️</h2>
+<h2><b>Machine Management</b></h2>
 <br />
 <p>
     <a class="btn btn-success" role="button" asp-page="./Create">
-        Create New &nbsp;<i class="bi bi-plus-circle"></i>
+        Create New &nbsp;<i class="bi bi-plus"></i>
     </a>
 </p>
 <table style="border-top: 1px solid black;" class="table table-striped">
@@ -40,17 +40,17 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.UsageRate)
+                    @Html.DisplayFor(modelItem => item.UsageRate)/Hr.
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MaxHoursPerDay)
+                    @Html.DisplayFor(modelItem => item.MaxHoursPerDay) Hrs.
                 </td>
                 <td>
                     <a class="btn btn-warning btn-sm mx-1" role="button" asp-page="./Edit" asp-route-id="@item.MachineCodeID">
-                        <i class="bi bi-pencil-square"></i>&nbsp;Edit
+                        Edit&nbsp;<i class="bi bi-pencil-square"></i>
                     </a>
                     <a class="btn btn-danger btn-sm mx-1" role="button" asp-page="./Delete" asp-route-id="@item.MachineCodeID">
-                        <i class="bi bi-trash"></i>&nbsp;Delete
+                        <i class="bi bi-trash"></i>@* &nbsp;Delete *@
                     </a>
             </td>
             </tr>

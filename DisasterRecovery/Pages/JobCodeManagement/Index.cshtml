@@ -1,41 +1,61 @@
 ﻿@page
 @model DisasterRecovery.Pages.JobCodeManagement.IndexModel
 @{
-    ViewData["Title"] = "JobCode";
+    ViewData["Title"] = "Job Code Management";
 }
 
 
-<div class="table-container">
-    <h1>Job Code Management</h1>
-    <a asp-page="./Create">Create Job Code</a>
-    <table class="table table-sm table-striped table-bordred">
-        <thread>
+<h2><b>Job Code Management</b></h2>
+<br />
+<p>
+    <a class="btn btn-success" role="button" asp-page="./Create">
+        Create New &nbsp;<i class="bi bi-plus"></i>
+    </a>
+</p>
+<table style="border-top: 1px solid black;" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Job Code
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Hourly Rate
+            </th>
+            <th>
+                Max Hours Per Day
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.JobCodes)
+        {
             <tr>
-                <th>Job code</th>
-                <th>Description</th>
-                <th>Hourly Rate</th>
-                <th>Max Hors per day</th>
-                <th></th>
-                <th></th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobCodeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HourlyRate)/Hr.
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxHoursPerDay) Hrs.
+                </td>
+                <td>
+                    <a class="btn btn-warning btn-sm mx-1" role="button" asp-page="./Edit" asp-route-id="@item.JobCodeID">
+                        Edit&nbsp;<i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm mx-1" role="button" asp-page="./Delete" asp-route-id="@item.JobCodeID">
+                        <i class="bi bi-trash"></i>@* &nbsp;Delete *@
+                    </a>
+                </td>
             </tr>
-        </thread>
-        <tboody>
-            @foreach (var job in Model.JobCodes)
-            {
-                <tr>
-                    <td>@job.JobCodeName</td>
-                    <td>@job.Description</td>
-                    <td>@job.HourlyRate</td>
-                    <td>@job.MaxHoursPerDay</td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@job.JobCodeID">Edit</a>
-                    </td>
-                    <td>
-                        <a asp-page="./Delete" asp-route-id="@job.JobCodeID">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tboody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>
 

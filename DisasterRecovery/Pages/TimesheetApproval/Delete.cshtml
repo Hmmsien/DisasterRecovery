@@ -1,0 +1,132 @@
+﻿@page
+@model DisasterRecovery.Pages.TimesheetApproval.DeleteModel
+@{
+    ViewData["Title"] = "Delete Timesheet";
+}
+
+<div>
+    <a asp-page="./Index"><img style="height: 30px; width: 30px;" src="https://static.thenounproject.com/png/251451-200.png" /></a>
+</div>
+<br />
+<h2><b>@ViewData["Title"]</b></h2>
+<hr />
+<br />
+@if (Model.ErrorMessage != "")
+{
+    <div class="alart alert-danger p-3" role="alert">
+        <b>Server Error: </b>@Model.ErrorMessage
+    </div>
+    <br />
+}
+<form method="post">
+    <button type="submit" class="btn btn-danger">Permanently Delete Timesheet</button>
+</form>
+<br />
+<div>
+    @if (Model.Timesheet.Status == "Pending" || Model.Timesheet.Status == "Viewed")
+    {
+        <span class="badge rounded-pill bg-secondary">@Model.Timesheet.Status</span>
+    }
+    else if (Model.Timesheet.Status == "Approved")
+    {
+        <span class="badge rounded-pill bg-success">@Model.Timesheet.Status</span>
+    }
+    <br />
+    <dl style="margin-top: 10px;" class="row">
+        <dt class="col-sm-2">
+            Contractor Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContractorName)
+        </dd>
+        <dt class="col-sm-2">
+            Date Submitted:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Timesheet.SubmitedDate)
+        </dd>
+        <dt class="col-sm-2">
+            Site Code:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Timesheet.SiteCode)
+        </dd>
+
+        @if (Model.LaborEntries.Count > 0)
+        {
+            <div style="margin-top: 10px;">
+                <b>Labor Entries</b>
+                <table style="border: 1px solid grey; width: 500px" class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Labor Code
+                            </th>
+                            <th>
+                                Hrs Worked
+                            </th>
+                            <th>
+                                Total Amount
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.LaborEntries)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelitem => item.JobCodeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelitem => item.HrsWorked) Hrs.
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelitem => item.TotalAmount)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        @if (Model.MachineEntries.Count > 0)
+        {
+            <div style="margin-top: 10px;">
+                <b>Machine Entries</b>
+                <table style="border: 1px solid grey; width: 500px" class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Machine Code
+                            </th>
+                            <th>
+                                Hrs Used
+                            </th>
+                            <th>
+                                Total Amount
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.MachineEntries)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelitem => item.MachineCodeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelitem => item.HrsUsed) Hrs.
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelitem => item.TotalAmount)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+
+    </dl>
+</div>

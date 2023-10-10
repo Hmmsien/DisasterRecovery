@@ -1,34 +1,45 @@
 ﻿@page
 @model DisasterRecovery.Pages.JobCodeManagement.CreateModel
 @{
+    ViewData["Title"] = "Create Job Code";
 }
 
-<div class="form-container">
-    <h2>Create new Job Code</h2>
-    <form method="post">
-        <div class="form-group">
-            <label class="control-label">Job code:</label>
-            <input type="text" class="form-control" asp-for="jobCode.JobCodeName" />
-        </div>
-        <div class="form-group">
-            <label class="control-label">Description:</label>
-            <input type="text" class="form-control" asp-for="jobCode.Description" />
-        </div>
-        <div class="form-group">
-            <label class="control-label">Hourly Rate:</label>
-            <div>
-                <input type="text" class="form-control" asp-for="jobCode.HourlyRate" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label">Max Hours per day:</label>
-            <input type="text" class="form-control" asp-for="jobCode.MaxHoursPerDay" />
-        </div>
-
-        <br />
-        <div class="mb-3 form-group">
-            <button type="submit" class="btn btn-outline-primary">Create</button>
-        </div>
-
-    </form>
+<div>
+    <a asp-page="./Index"><img style="height: 30px; width: 30px;" src="https://static.thenounproject.com/png/251451-200.png" /></a>
 </div>
+<br />
+<h2><b>@ViewData["Title"]</b></h2>
+<hr />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form id="createJobCode" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating">
+                <input asp-for="jobCode.JobCodeName" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.JobCodeName"></label>
+                <span asp-validation-for="jobCode.JobCodeName" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="jobCode.Description" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.Description"></label>
+                <span asp-validation-for="jobCode.Description" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="jobCode.HourlyRate" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.HourlyRate"></label>
+                <span asp-validation-for="jobCode.HourlyRate" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="jobCode.MaxHoursPerDay" class="form-control" aria-required="true" />
+                <label asp-for="jobCode.MaxHoursPerDay"></label>
+                <span asp-validation-for="jobCode.MaxHoursPerDay" class="text-danger"></span>
+            </div>
+            <button id="createJobCode" type="submit" class="w-100 btn btn-lg btn-primary mt-3">Create</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

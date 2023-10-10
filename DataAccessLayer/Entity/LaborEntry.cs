@@ -15,7 +15,6 @@ namespace DataAccessLayer.Entity
 
         [Display(Name = "Hrs. worked")]
         [Required]
-        [DataType(DataType.Currency)]
         public int HrsWorked { get; set; }
 
         [DataType(DataType.Currency)]

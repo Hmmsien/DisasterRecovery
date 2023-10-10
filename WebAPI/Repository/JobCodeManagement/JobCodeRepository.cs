@@ -1,6 +1,6 @@
 ﻿using System;
-using DataAccessLayer.Entity;
 using DataAccessLayer.Data;
+using DataAccessLayer.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebAPI.Repository.JobCodeManagement

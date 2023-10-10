@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccessLayer.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 
 namespace DisasterRecovery.Pages.JobCodeManagement
 {
+    [Authorize(Policy = "AdminOnly")]
     public class EditModel : PageModel
     {
         private string apiBaseUrl = "http://localhost:5113";
