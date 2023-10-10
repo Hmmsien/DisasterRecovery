@@ -5,8 +5,66 @@
     Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Style this page as you want</p>
-    <a asp-area="" asp-page="/Dashboard" class="btn btn-outline-primary"><b>Go to Dashboard</b></a>
-</div>
+<header class="hero text-center">
+    <div class="container">
+        <h1>Welcome to Disaster Recovery</h1>
+        <p>Your Trusted Partner in Disaster Management</p>
+        <a asp-area="" asp-page="/Dashboard" class="btn btn-outline-primary"><b>Go to Dashboard</b></a>
+    </div>
+</header>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>About Us</h2>
+                <p>At Disaster Recovery, we understand the havoc and distress that disasters can cause in your life. Whether it's a burst pipe flooding your home, a storm-damaged roof, an electrical issue, or general repairs needed after a calamity, we're here to help.</p>
+                <p>Our team of skilled professionals includes plumbers, carpenters, electricians, and general laborers, each with years of experience and expertise in their respective fields. We are committed to restoring your property and peace of mind swiftly and efficiently.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="images/about.jpg" alt="About Us" class="img-fluid rounded-circle">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center">Our Services</h2>
+        <div class="row">
+            <!-- Plumbing Service -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="images/plumber.jpeg" class="card-img-top" alt="Plumbing Service">
+                    <div class="card-body">
+                        <h5 class="card-title">Plumbing Services</h5>
+                        <p class="card-text">Our experienced plumbers are ready to tackle any plumbing issue you may have. From fixing leaks and clogs to installing new fixtures, we ensure your plumbing works flawlessly.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Carpentry Service -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="images/carpenter.jpeg" class="card-img-top" alt="Carpentry Service">
+                    <div class="card-body">
+                        <h5 class="card-title">Carpentry Services</h5>
+                        <p class="card-text">Our skilled carpenters are experts in woodwork and repairs. Whether it's fixing damaged structures or creating custom woodwork, we bring craftsmanship to every project.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Electrical Service -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="images/electrician.jpeg" class="card-img-top" alt="Electrical Service">
+                    <div class="card-body">
+                        <h5 class="card-title">Electrical Services</h5>
+                        <p class="card-text">Our certified electricians ensure the safety and functionality of your electrical systems. From repairs to installations, we handle all your electrical needs with precision.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-center">No matter the disaster, we have the expertise to restore your home or business.</p>
+    </div>
+</section>
