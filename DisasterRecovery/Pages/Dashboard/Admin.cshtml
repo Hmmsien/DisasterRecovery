@@ -1,0 +1,68 @@
+﻿@page
+@model DisasterRecovery.Pages.Dashboard.AdminModel
+@{
+}
+
+
+<section class="text-center">
+    <div class="row">
+
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="p-3 badge-primary rounded-4">
+                    <a asp-area="" asp-page="/JobCodeManagement/Index">
+                        <img class="dash-img" src="/images/Admin/jobcode.png" />
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Job Code Management</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="p-3 badge-primary rounded-4">
+                    <a asp-area="" asp-page="/MachineCodeManagement/Index">
+                        <img class="dash-img" src="/images/Admin/Machine.jpeg" />
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Machine Management</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="p-3 badge-primary rounded-4">
+                    <a asp-page="/TimesheetApproval/Index">
+                        <img class="dash-img" src="/images/Admin/timesheetApproval.jpeg" />
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Timesheet Approval</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card">
+                <div class="p-3 badge-primary rounded-4">
+                    <img class="dash-img" src="/images/Admin/userManagement.jpeg" />
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">User Management</h5>
+ 
+                    <a asp-page="/UserManagement/AdminManagement">Admin </a> ｜
+                    <a asp-page="/UserManagement/ContractorManagement">Contractor</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -9,7 +9,15 @@
     <div class="container">
         <h1>Welcome to Disaster Recovery</h1>
         <p>Your Trusted Partner in Disaster Management</p>
-        <a asp-area="" asp-page="/Dashboard" class="btn btn-outline-primary"><b>Go to Dashboard</b></a>
+        @if (User.HasClaim(c => c.Type == "Admin"))
+        {
+            <a asp-area="" asp-page="/Dashboard/Admin" class="btn btn-outline-primary"><b>Go to Dashboard</b></a>
+
+         }
+         else if(User.HasClaim(c => c.Type == "Contractor"))
+        {
+        <a asp-area="" asp-page="/Dashboard/Contractor" class="btn btn-outline-primary"><b>Go to Dashboard</b></a>
+        }
     </div>
 </header>
 

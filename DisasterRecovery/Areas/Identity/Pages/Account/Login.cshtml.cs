@@ -70,8 +70,6 @@ namespace DisasterRecovery.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= Url.Content("~/Dashboard");
-
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(Input.Email);
@@ -80,7 +78,12 @@ namespace DisasterRecovery.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    var claims = await _userManager.GetClaimsAsync(user);
+
+                    if (claims.Any(c => c.Type == "Contractor"))
+                        return RedirectToPage("../Dashboard/Contractor");
+                    else if (claims.Any(c => c.Type == "Admin"))
+                        return RedirectToPage("../Dashboard/Admin");
                 }
                 if (result.RequiresTwoFactor)
                 {

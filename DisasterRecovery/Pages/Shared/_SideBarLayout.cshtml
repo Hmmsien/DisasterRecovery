@@ -33,10 +33,9 @@
             <div class="col-auto px-0">
                 <div id="sidebar" class="collapse collapse-horizontal show border-end">
                     <div style="width: 250px; background-color: #FAF9F6;" id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
-                        <a style="background-color: #FAF9F6;" asp-area="" asp-page="/Dashboard" class="list-group-item border-end-0 d-inline-block text-truncate py-3" data-bs-parent="#sidebar"><i class="bi bi-speedometer"></i>&nbsp;&nbsp;<span>Dashboard</span> </a>
                         @if (User.HasClaim(c => c.Type == "Admin"))
                         {
-
+                            <a style="background-color: #FAF9F6;" asp-area="" asp-page="/Dashboard/Admin" class="list-group-item border-end-0 d-inline-block text-truncate py-3" data-bs-parent="#sidebar"><i class="bi bi-speedometer"></i>&nbsp;&nbsp;<span>Dashboard</span> </a>
                             <a style="background-color: #FAF9F6;" class="list-group-item border-end-0 d-inline-block text-truncate py-3" data-bs-parent="#sidebar" asp-area="" asp-page="/JobCodeManagement/Index"><i class="bi bi-tools"></i>&nbsp;&nbsp;<span>Job Code Management</span></a>
                             <a style="background-color: #FAF9F6;" class="list-group-item border-end-0 d-inline-block text-truncate py-3" data-bs-parent="#sidebar" asp-area="" asp-page="/MachineCodeManagement/Index"><i class="bi bi-gear"></i>&nbsp;&nbsp;<span>Machine Management</span></a>
                             <a style="background-color: #FAF9F6;" class="list-group-item border-end-0 d-inline-block text-truncate py-3" data-bs-parent="#sidebar" asp-area="" asp-page="/TimesheetApproval/Index"><i class="bi bi-card-checklist"></i>&nbsp;&nbsp;<span>Timesheet Approval</span></a>
@@ -56,6 +55,7 @@
                         else
                         @if (User.HasClaim(c => c.Type == "Contractor"))
                         {
+                            <a style="background-color: #FAF9F6;" asp-area="" asp-page="/Dashboard/Contractor" class="list-group-item border-end-0 d-inline-block text-truncate py-3" data-bs-parent="#sidebar"><i class="bi bi-speedometer"></i>&nbsp;&nbsp;<span>Dashboard</span> </a>
                             <a style="background-color: #FAF9F6;" class="list-group-item border-end-0 d-inline-block text-truncate py-3" data-bs-parent="#sidebar" asp-area="" asp-page="/TimesheetSubmission/Index"><i class="bi bi-table"></i>&nbsp;&nbsp;<span>Timesheet Submissions</span></a>
                         }
                     </div>
