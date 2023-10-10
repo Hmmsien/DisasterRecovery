@@ -191,3 +191,8 @@ nav ul li ul li a {
     display: flex;
     align-items: center;
 }
+
+.dashboard-Contractor .card{
+    width: 500px;
+    height: 400px;
+}
